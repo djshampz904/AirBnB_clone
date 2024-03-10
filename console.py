@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import cmd
 from models.base_model import BaseModel
-from models.user import User
 import models
 
 
@@ -22,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id"""
+        """Creates a new instance of BaseModel"""
         if not line:
             print("** class name missing **")
         elif line != "BaseModel":
@@ -33,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_model.id)
 
     def do_show(self, line):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an instance"""
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -66,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
 
     def do_all(self, line):
-        """Prints all string representation of all instances based or not on the class name"""
+        """Prints all string representation  class name"""
         if line and line not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
@@ -74,8 +73,8 @@ class HBNBCommand(cmd.Cmd):
                 print(obj)
 
     def do_update(self, line):
-        """Updates an instance based on the class name and id by adding or updating attribute
-        usage update <class name> <id> <attribute name> "<attribute value>"""
+        """usage update <class name> <id> <attribute name>
+        "<attribute value>"""
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -95,7 +94,6 @@ class HBNBCommand(cmd.Cmd):
                 if args[2] not in ["id", "created_at", "updated_at"]:
                     setattr(models.storage.all()[key], args[2], args[3])
                     models.storage.all()[key].save()
-
 
     def do_count(self, line):
         """Retrieve the number of instances of a class"""
