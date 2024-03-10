@@ -6,6 +6,7 @@ import models
 
 
 class BaseModel:
+    """This class is the base class for all other classes in this project"""
     id = str(uuid.uuid4())
     created_at = datetime.now()
     updated_at = datetime.now()
