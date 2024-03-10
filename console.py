@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] != ["BaseModel", "User"]:
+        elif args[0] not in models.CLASSES:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 if args[2] not in ["id", "created_at", "updated_at"]:
-                    setattr(models.storage.all()[key], args[2], args[3])
+                    setattr(models.storage.all()[key], args[2], args[3].strip('"'))
                     models.storage.all()[key].save()
 
     def do_count(self, line):
