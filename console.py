@@ -26,14 +26,13 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel
-        """
+        """Creates a new instance of the specified class"""
         if not line:
             print("** class name missing **")
-        elif line != "BaseModel":
+        elif line not in models.CLASSES:
             print("** class doesn't exist **")
         else:
-            new_model = BaseModel()
+            new_model = models.CLASSES[line]()  # Create an instance of the specified class
             new_model.save()
             print(new_model.id)
 
