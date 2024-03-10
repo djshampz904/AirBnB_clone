@@ -4,7 +4,8 @@ from .base_model import BaseModel
 
 
 class Place(BaseModel):
-    """This class inherits from BaseModel and defines the attributes of the Place class"""
+    """This class inherits from BaseModel and
+    defines the attributes of the Place class"""
     city_id = ""
     user_id = ""
     name = ""
