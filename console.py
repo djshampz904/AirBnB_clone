@@ -72,18 +72,20 @@ class HBNBCommand(cmd.Cmd):
                 del models.storage.all()[key]
                 models.storage.save()
 
+    class HBNBCommand(cmd.Cmd):
+        """Command interpreter class for HBNB project"""
+        prompt = '(hbnb) '
+
+        # ... other methods ...
+
     def do_all(self, line):
-        """Prints all string representation  class name
-        """
-        if line and line not in ["BaseModel", "User"]:
+        """Prints all string representation of all instances based or not on the class name"""
+        if line and line not in models.CLASSES:
             print("** class doesn't exist **")
-        elif line in ["BaseModel", "User"]:
-            for obj in models.storage.all().values():
-                if obj.__class__.__name__ == line:
-                    print(obj)
+        elif line in models.CLASSES:
+            print([str(obj) for obj in models.storage.all().values() if obj.__class__.__name__ == line])
         else:
-            for obj in models.storage.all().values():
-                print(obj)
+            print([str(obj) for obj in models.storage.all().values()])
 
     def do_update(self, line):
         """usage update <class name> <id> <attribute name>
