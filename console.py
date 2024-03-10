@@ -77,6 +77,10 @@ class HBNBCommand(cmd.Cmd):
         """
         if line and line not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
+        elif line in ["BaseModel", "User"]:
+            for obj in models.storage.all().values():
+                if obj.__class__.__name__ == line:
+                    print(obj)
         else:
             for obj in models.storage.all().values():
                 print(obj)
