@@ -2,11 +2,11 @@
 import cmd
 from models.base_model import BaseModel
 import models
-
 """ This module contains the entry point of the command interpreter """
 
 
 class HBNBCommand(cmd.Cmd):
+    """Command interpreter class for HBNB project"""
     prompt = '(hbnb) '
 
     def do_EOF(self, line):
