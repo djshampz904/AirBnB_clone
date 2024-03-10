@@ -17,7 +17,10 @@ class BaseModel:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     # Instead of this
-                    setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                    setattr(self,
+                            key,
+                            datetime.strptime(value,
+                                              '%Y-%m-%dT%H:%M:%S.%f'))
 
                     # Do this
                     setattr(
@@ -35,7 +38,8 @@ class BaseModel:
 
     def __str__(self):
         """Return the string representation of the BaseModel class"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """Update the updated_at attribute with the current datetime"""
