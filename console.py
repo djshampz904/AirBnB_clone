@@ -10,20 +10,24 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def do_EOF(self, line):
-        """EOF command to exit the program"""
+        """EOF command to exit the program
+        """
         print()
         return True
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """Quit command to exit the program
+        """
         return True
 
     def emptyline(self):
-        """Do nothing on empty input line"""
+        """Do nothing on empty input line
+        """
         pass
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel"""
+        """Creates a new instance of BaseModel
+        """
         if not line:
             print("** class name missing **")
         elif line != "BaseModel":
@@ -34,7 +38,8 @@ class HBNBCommand(cmd.Cmd):
             print(new_model.id)
 
     def do_show(self, line):
-        """Prints the string representation of an instance"""
+        """Prints the string representation of an instance
+        """
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -50,7 +55,8 @@ class HBNBCommand(cmd.Cmd):
                 print(models.storage.all()[key])
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id"""
+        """Deletes an instance based on the class name and id
+        """
         args = line.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -67,7 +73,8 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
 
     def do_all(self, line):
-        """Prints all string representation  class name"""
+        """Prints all string representation  class name
+        """
         if line and line not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
         else:
@@ -98,7 +105,8 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.all()[key].save()
 
     def do_count(self, line):
-        """Retrieve the number of instances of a class"""
+        """Retrieve the number of instances of a class
+        """
         count = 0
         for obj in models.storage.all().values():
             if obj.__class__.__name__ == line:
