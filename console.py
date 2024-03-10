@@ -3,6 +3,8 @@ import cmd
 from models.base_model import BaseModel
 import models
 
+""" This module contains the entry point of the command interpreter """
+
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
